@@ -31,7 +31,7 @@ function GameObject(GameProps) {
 
 // destroy prototype for GameObject
 GameObject.prototype.destroy = function() {
-  returns`${this.name} was removed from the game.`;
+  return `${this.name} was removed from the game.`;
 };
 
 /*
@@ -41,7 +41,9 @@ GameObject.prototype.destroy = function() {
   * should inherit destroy() from GameObject's prototype
 */
 /*Constructor  for CharacterStats*/
+
 function CharacterStats(CharProps) {
+  GameObject.call(this, CharProps);
   this.healthPoints = CharProps.healthPoints;
 }
 //inherited destroy() from GameObject's prototype / takeDamage prototype for CharacterStats
@@ -60,13 +62,18 @@ CharacterStats.prototype.takeDamage = function() {
   * should inherit takeDamage() from CharacterStats
 */
 /*Constructor for  Humanoid*/
+
 function Humanoid(HumanProps) {
-  this.team = HumanProps.createdAt;
-  this.weapons = HumanProps.name;
-  this.language = HumanProps.dimensions;
+  CharacterStats.call(this, HumanProps);
+  this.team = HumanProps.team;
+  this.weapons = HumanProps.weapons;
+  this.language = HumanProps.language;
 }
 //prototype  for Humanoid
 Humanoid.prototype = Object.create(CharacterStats.prototype);
+Humanoid.prototype.greet = function() {
+  return `${this.name} offers a greeting in ${this.language}.`;
+};
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
