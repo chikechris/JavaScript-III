@@ -53,12 +53,23 @@ function SayHi(name) {
   };
 }
 
-var greetChris = new SayHi("Chris");
-var greetCyndy = new SayHi("Cyndy");
+let greetChris = new SayHi("Chris");
+let greetCyndy = new SayHi("Cyndy");
+let greetMaggie = new SayHi("Maggie");
 
 greetChris.say();
 greetCyndy.say();
+greetMaggie.say();
 
 // Principle 4
 
 // code example for Explicit Binding
+let MyProps = function() {
+  console.log("Prop A:  " + this.x + "Prop B: " + this.y);
+};
+
+let Object = {
+  x: "PropA",
+  y: "PropB"
+};
+MyProps.call(Object);
